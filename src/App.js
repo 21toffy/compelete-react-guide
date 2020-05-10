@@ -54,16 +54,11 @@ class App extends Component{
       padding:'8px'
     };
 
-    return (
-          <div className="App">
-            <h1>i am a react app</h1>
-            <button 
-            style = {style}
-            onClick = {this.togglePersonsHandler}>switch name</button>
-            {
-              //this is an if statement that displays some data if the showPersons is true
-              this.state.showPersons === true ?
-              <div>
+    let persons = null;
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
               <p>click on the button to hide</p>
               <Person 
               name = {this.state.persons[0].name} 
@@ -85,10 +80,19 @@ class App extends Component{
               </Person>
               
               </div>
-              //this is the else statement that displays an alternative if the sowPersons state returns as false
-              : 
-              <p>click on the button to reveal</p>
-            }
+      );
+    }
+
+
+    return (
+          <div className="App">
+            <h1>i am a react app</h1>
+            <button 
+            style = {style}
+            onClick = {this.togglePersonsHandler}>switch name</button>
+           
+             {persons} 
+              
           </div>
         );
     // return React.createElement('div', {className:'App'}, React.createElement('h1',{className:'App'}  ,'hi i\'m a react app '));
