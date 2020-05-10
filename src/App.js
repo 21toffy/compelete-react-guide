@@ -24,18 +24,13 @@ class App extends Component{
           {name : 'ayomide', age : '27'},
           {name : 'omoyeni okedeji', age : '28'}
         ]
-      }
-      )
+      })
     }
-    nameChangeHandler = (event) => {
-      this.setState( {
-        person: [
-          {name : 'tofunmi', age:23},
-          {name : event.target.value, age : 27},
-          {name : 'omoyeni', age : 28}
-        ]
-      }
-      )
+
+    deleteStateHandler = (personIndex) => {
+      const thispersons = this.state.persons;
+      thispersons.splice(personIndex, 1);
+      this.setState({persons: thispersons})
     }
     
 
@@ -60,25 +55,15 @@ class App extends Component{
       persons = (
         <div>
               <p>click on the button to hide</p>
-              <Person 
-              name = {this.state.persons[0].name} 
-              age={this.state.persons[0].age}
-              change = {this.nameChangeHandler}
-              />
-              <Person 
-              name = {this.state.persons[1].name} 
-              age = {this.state.persons[1].age}
-              change = {this.nameChangeHandler}
-              />
-              <Person
-              name = {this.state.persons[2].name} 
-              age = {this.state.persons[2].age}
-              click = {this.switchNameHandler}
-              change = {this.nameChangeHandler}
-              >
-                how do i display this deail
-              </Person>
-              
+
+              {this.state.persons.map((myperson, index) =>{
+                return <Person
+                click = {() => this.deleteStateHandler(index)}
+                name = {myperson.name}
+                age = {myperson.age}
+                />
+              })}
+                            
               </div>
       );
     }
