@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person';
+import Todos from './Components/Todos';
 
 
 
@@ -12,7 +13,16 @@ class App extends Component{
       {id:'nrnko', name : 'omoyeni', age : '28'}
               ],
               
-    showPersons :false
+    showPersons :false,
+
+
+    notes : [
+      {id: '1', owner:'tofunmi', title : 'my first note', note: '', date:''},
+      {id: '2', owner:'omoyeni', title : 'my Second note', note: '', date:''},
+      {id: '3', owner:'ayomide', title : 'my third note', note: '', date:''}
+    ]
+
+    
   }
 
   
@@ -80,10 +90,11 @@ class App extends Component{
 
     return (
           <div className="App">
-            <h1>i am a react app</h1>
+            <Todos/>
             <button 
             style = {style}
             onClick = {this.togglePersonsHandler}>switch name</button>
+            
            
              {persons} 
               
