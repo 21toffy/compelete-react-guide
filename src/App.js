@@ -22,7 +22,7 @@ class App extends Component{
       {id: '3', owner:'ayomide', title : 'my third note', note: '', date:''}
     ]
 
-    
+
   }
 
   
@@ -90,7 +90,7 @@ class App extends Component{
 
     return (
           <div className="App">
-            <Todos/>
+            <Todos todos = {this.state.notes} />
             <button 
             style = {style}
             onClick = {this.togglePersonsHandler}>switch name</button>
