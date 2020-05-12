@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import Person from './Person/Person';
 import Todos from './Components/Todos';
-
+import Header from './Components/Layout/header';
+import AddNote from './Components/AddNote/AddNote';
 
 
 class App extends Component{
@@ -23,7 +24,7 @@ class App extends Component{
     ]
   }
 
-
+//pining or marking important notes
   markImportant = (id) => {
     this.setState({notes:this.state.notes.map(note =>{
       if(note.id===id){
@@ -31,6 +32,11 @@ class App extends Component{
       }
         return note;
     })});
+  }
+  //deleting a note
+  deleteNote = (id) => {
+    // console.log(id)
+    this.setState({notes:[...this.state.notes.filter(note => note.id !== id)]})
   }
   
   switchNameHandler = (newName) =>{
@@ -63,6 +69,16 @@ class App extends Component{
       const doesShow = this.state.showPersons;
       //this sets the state to yhe opposite of the currnt state 
       this.setState({showPersons: !doesShow})
+    }
+
+    addNote = (title) => {
+      const newNote = {
+        id:4,
+        title,
+        pin:false 
+      }
+
+      this.setState({notes:[...this.state.notes, newNote]})
     }
 
 
@@ -99,12 +115,20 @@ class App extends Component{
 
     return (
           <div className="App">
+            <Header />
+            <div className = 'container'>
 
-            <Todos todos = {this.state.notes} markImportant={this.markImportant}/>
+            <Todos todos = {this.state.notes} markImportant={this.markImportant} deleteNote = {this.deleteNote}/>
+
+            <AddNote addNote = {this.addNote} />
+            </div>
+
+
 
             <button 
             style = {style}
             onClick = {this.togglePersonsHandler}>switch name</button>
+
             
            
              {persons} 

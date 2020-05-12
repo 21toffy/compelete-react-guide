@@ -12,6 +12,7 @@ export class TodoItem extends Component {
             <div className = 'note'>
                 <input className = 'checkBox' type = 'checkbox' onChange ={this.props.markImportant.bind(this, id)} />{' '}
                 {title} 
+                <button className ="deleteButton" onClick ={this.props.deleteNote.bind(this, id)} >X</button>
             </div>            
         )
     }

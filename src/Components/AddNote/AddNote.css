@@ -1,0 +1,15 @@
+.formClass{
+    display: flex;
+}
+
+.titleInput {
+    flex-grow: 1;
+    align-items:stretch;
+}
+
+
+.pinCheckBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
