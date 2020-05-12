@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './Todo.css';
+
+
 
 
 export class TodoItem extends Component {
     render(){
+        const {title, id } = this.props.myTodos;
         return(
-            <div>
-                {this.props.myTodos.title}
-            </div>
+            <div className = 'note'>
+                <input className = 'checkBox' type = 'checkbox' onChange ={this.props.markImportant.bind(this, id)} />{' '}
+                {title} 
+            </div>            
         )
     }
 }

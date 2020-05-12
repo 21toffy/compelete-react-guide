@@ -1,0 +1,16 @@
+.note {
+    width:30%;
+    /* margin:16px 68% 16px 0; */
+    margin-top: 4px;
+    margin-left: 68%;
+    border: 1px solid #eeee;
+    box-shadow: 0 2px 3px #cccc;
+    padding: 16px;
+    text-align: center;
+    background-color: #00bcd4;
+    color:#ffff;
+}
+
+.checkBox {
+    background-color:#cccc;
+}

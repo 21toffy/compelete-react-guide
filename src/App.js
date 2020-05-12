@@ -17,14 +17,21 @@ class App extends Component{
 
 
     notes : [
-      {id: '1', owner:'tofunmi', title : 'my first note', note: '', date:''},
-      {id: '2', owner:'omoyeni', title : 'my Second note', note: '', date:''},
-      {id: '3', owner:'ayomide', title : 'my third note', note: '', date:''}
+      {id: '1', owner:'tofunmi', title : 'my first note', note: '', date:'', pin:false},
+      {id: '2', owner:'omoyeni', title : 'my Second note', note: '', date:'', pin:false},
+      {id: '3', owner:'ayomide', title : 'my third note', note: '', date:'', pin:false}
     ]
-
-
   }
 
+
+  markImportant = (id) => {
+    this.setState({notes:this.state.notes.map(note =>{
+      if(note.id===id){
+        note.pin = !note.pin
+      }
+        return note;
+    })});
+  }
   
   switchNameHandler = (newName) =>{
     // alert('was clicked');
@@ -56,8 +63,10 @@ class App extends Component{
       const doesShow = this.state.showPersons;
       //this sets the state to yhe opposite of the currnt state 
       this.setState({showPersons: !doesShow})
-
     }
+
+
+
   render(){
     const style = {
       backgroundColor: 'white',
@@ -90,7 +99,9 @@ class App extends Component{
 
     return (
           <div className="App">
-            <Todos todos = {this.state.notes} />
+
+            <Todos todos = {this.state.notes} markImportant={this.markImportant}/>
+
             <button 
             style = {style}
             onClick = {this.togglePersonsHandler}>switch name</button>
